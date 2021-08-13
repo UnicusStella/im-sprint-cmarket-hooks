@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import CartItem from '../components/CartItem'
 import OrderSummary from '../components/OrderSummary'
 
-export default function ShoppingCart({ items, cartItems }) {
+export default function ShoppingCart({ items, cartItems , setCartItems}) {
   const [checkedItems, setCheckedItems] = useState(cartItems.map((el) => el.itemId))
 
   const handleCheckChange = (checked, id) => {
@@ -24,10 +24,19 @@ export default function ShoppingCart({ items, cartItems }) {
   };
 
   const handleQuantityChange = (quantity, itemId) => {
+    cartItems.map(el => {
+      
+      if(el.itemId === itemId)
+        el.quantity = quantity
+    })
+    
+
+    setCartItems([...cartItems])
   }
 
   const handleDelete = (itemId) => {
     setCheckedItems(checkedItems.filter((el) => el !== itemId))
+    setCartItems(cartItems.filter(el => el.itemId !== itemId))
   }
 
   const getTotal = () => {

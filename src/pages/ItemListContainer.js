@@ -4,6 +4,7 @@ import Item from '../components/Item';
 function ItemListContainer({ items , cartItems , setCartItems}) {
   const handleClick = (e, itemId) => {
     let checkItem = cartItems.find(item => itemId === item.itemId );
+    console.log(checkItem)
     if (checkItem === undefined) {
       checkItem = {itemId : itemId , quantity : 1}
       cartItems.push(checkItem);

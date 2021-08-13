@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav({cartItems}) {
-  const totalQty = cartItems.length
+  const totalQty = cartItems.reduce((acc, cur) => acc + cur.quantity, 0)
   return (
     <div id="nav-body">
       <span id="title">

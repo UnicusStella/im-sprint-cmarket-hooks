@@ -23,7 +23,7 @@ function App() {
           <ItemListContainer items={items} cartItems={cartItems} setCartItems={setCartItems}/>
         </Route>
         <Route path="/shoppingcart">
-          <ShoppingCart cartItems={cartItems} items={items} />
+          <ShoppingCart cartItems={cartItems} items={items} setCartItems = {setCartItems}/>
         </Route>
       </Switch>
     </Router>
