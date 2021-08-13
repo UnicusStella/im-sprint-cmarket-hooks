@@ -31,7 +31,7 @@ export default function ShoppingCart({ items, cartItems , setCartItems}) {
     })
     
 
-    setCartItems([...cartItems])
+    setCartItems([cartItems.map(el => { if(el.itemId === itemId) el.quantity = quantity})])
   }
 
   const handleDelete = (itemId) => {
