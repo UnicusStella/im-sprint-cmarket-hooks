@@ -3,16 +3,15 @@ import Item from '../components/Item';
 
 function ItemListContainer({ items , cartItems , setCartItems}) {
   const handleClick = (e, itemId) => {
-    let checkItem = cartItems.find(item => itemId === item.itemId );
-    console.log(checkItem)
-    if (checkItem === undefined) {
-      checkItem = {itemId : itemId , quantity : 1}
-      cartItems.push(checkItem);
-    } else {
-      checkItem.quantity++;
+
+    let filterItem = cartItems.filter(el => el.itemId === itemId);
+    if(filterItem.length === 0){
+      filterItem = {itemId : itemId, quantity : 1}
+      cartItems.push(filterItem);
+    }else{
+      cartItems.map(el => el.quantity++)
     }
-  
-    setCartItems([...cartItems]);
+    setCartItems([...cartItems])
   };
 
   return (

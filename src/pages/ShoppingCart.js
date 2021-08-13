@@ -24,14 +24,9 @@ export default function ShoppingCart({ items, cartItems , setCartItems}) {
   };
 
   const handleQuantityChange = (quantity, itemId) => {
-    cartItems.map(el => {
-      
-      if(el.itemId === itemId)
-        el.quantity = quantity
-    })
-    
+    cartItems.map(el => { if (el.itemId === itemId) el.quantity = quantity})
 
-    setCartItems([cartItems.map(el => { if(el.itemId === itemId) el.quantity = quantity})])
+    setCartItems([...cartItems])
   }
 
   const handleDelete = (itemId) => {
