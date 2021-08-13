@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav() {
-
+function Nav({cartItems}) {
+  const totalQty = cartItems.reduce((acc, cur) => acc + cur.quantity, 0)
   return (
     <div id="nav-body">
       <span id="title">
@@ -12,8 +12,8 @@ function Nav() {
       <div id="menu">
         <Link to="/">상품리스트</Link>
         <Link to="/shoppingcart">
-          장바구니<span id="nav-item-counter">0</span>
-        </Link>
+            장바구니<span id="nav-item-counter">{totalQty}</span>
+              </Link>
       </div>
     </div>
   );

@@ -17,10 +17,10 @@ function App() {
 
   return (
     <Router>
-      <Nav />
+      <Nav cartItems={cartItems}/>
       <Switch>
         <Route exact={true} path="/">
-          <ItemListContainer items={items} />
+          <ItemListContainer items={items} cartItems={cartItems} setCartItems={setCartItems}/>
         </Route>
         <Route path="/shoppingcart">
           <ShoppingCart cartItems={cartItems} items={items} />
