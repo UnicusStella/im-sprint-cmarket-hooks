@@ -1,24 +1,27 @@
 import React from 'react';
 import Item from '../components/Item';
 
-function ItemListContainer({ items , cartItems , setCartItems}) {
+function ItemListContainer({ items, cartItems, setCartItems }) {
   const handleClick = (e, itemId) => {
-
-    let filterItem = cartItems.filter(el => el.itemId === itemId);
-    if(filterItem.length === 0){
-      filterItem = {itemId : itemId, quantity : 1}
+    let filterItem = cartItems.filter((el) => el.itemId === itemId);
+    if (!filterItem.length) {
+      filterItem = { itemId: itemId, quantity: 1 };
       cartItems.push(filterItem);
-    }else{
-      cartItems.map(el => el.quantity++)
+    } else {
+      cartItems.map((el) =>
+        el.itemId === itemId ? el.quantity++ : el.quantity + 0
+      );
     }
-    setCartItems([...cartItems])
+    setCartItems([...cartItems]);
   };
 
   return (
     <div id="item-list-container">
       <div id="item-list-body">
         <div id="item-list-title">쓸모없는 선물 모음</div>
-        {items.map((item, idx) => <Item item={item} key={idx} handleClick={handleClick} />)}
+        {items.map((item, idx) => (
+          <Item item={item} key={idx} handleClick={handleClick} />
+        ))}
       </div>
     </div>
   );
